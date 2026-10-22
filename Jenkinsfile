@@ -150,6 +150,21 @@ pipeline {
             post { always { archiveArtifacts artifacts: 'zap-report.html', allowEmptyArchive: true } }
         }
 
+        stage('Consolidated Security Report') {
+            agent { docker { image 'python:3.10-slim-bookworm'
+                            args "--network ${DOCKER_NETWORK}"
+                            reuseNode true } }
+            steps {
+                withCredentials([string(credentialsId: "${SONAR_CRED}", variable: 'SONAR_TOKEN')]) {
+                    sh '''python scripts/generate_security_report.py \
+                            --build "$BUILD_NUMBER" --image "$IMAGE:$TAG" \
+                            --sonar-host "$SONAR_HOST_URL" --sonar-project takecare \
+                            --sonar-url "http://3.107.90.61:9000/dashboard?id=takecare"'''
+                }
+            }
+            post { always { archiveArtifacts artifacts: 'security-report.html', allowEmptyArchive: true } }
+        }
+
         stage('Push Image') {
             steps {
                 withCredentials([usernamePassword(credentialsId: "${DOCKERHUB_CRED}",
