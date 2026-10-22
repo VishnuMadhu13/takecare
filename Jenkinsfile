@@ -116,18 +116,22 @@ pipeline {
 
         stage('DAST (OWASP ZAP)') {
             steps {
-                // App and ZAP share a per-build docker network so ZAP can resolve the app by name
                 sh '''
                     NET=dast-net-${BUILD_NUMBER}
                     APP=takecare-dast-${BUILD_NUMBER}
                     ZAP=zap-${BUILD_NUMBER}
+                    VOL=zap-wrk-${BUILD_NUMBER}
                     cleanup() {
                         docker rm -f $APP $ZAP >/dev/null 2>&1 || true
                         docker network rm $NET >/dev/null 2>&1 || true
+                        docker volume rm $VOL >/dev/null 2>&1 || true
                     }
                     trap cleanup EXIT
 
                     docker network create $NET
+                    docker volume create $VOL
+                    docker run --rm -u root -v $VOL:/zap/wrk ghcr.io/zaproxy/zaproxy:stable chmod 777 /zap/wrk
+
                     docker run -d --name $APP --network $NET \
                         -e DB_ENGINE=sqlite -e DEBUG=False -e ALLOWED_HOSTS='*' -e RUN_MIGRATIONS=1 \
                         $IMAGE:$TAG
@@ -137,9 +141,10 @@ pipeline {
                         sleep 2
                     done
 
-                    docker run --name $ZAP --network $NET -t ghcr.io/zaproxy/zaproxy:stable \
+                    docker run --name $ZAP --network $NET -v $VOL:/zap/wrk -t ghcr.io/zaproxy/zaproxy:stable \
                         zap-baseline.py -t http://$APP:8000 -r zap-report.html -I || true
-                    docker cp $ZAP:/zap/wrk/zap-report.html ./zap-report.html || true
+                    docker cp $ZAP:/zap/wrk/zap-report.html ./zap-report.html
+                    test -s zap-report.html
                 '''
             }
             post { always { archiveArtifacts artifacts: 'zap-report.html', allowEmptyArchive: true } }
