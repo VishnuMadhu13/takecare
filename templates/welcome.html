@@ -1,0 +1,122 @@
+{% load static %}
+{% block content %}
+{% include 'welheaderp.html'  %}
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <h1></h1>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+    <section id="why-us" class="why-us">
+
+      <div class="container">
+
+        <div class="row">
+          <center>
+
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="content">
+              <h3></h3>
+              <p>
+Provide direct support to an individual, family or community by paying medical expenses for service.              </p>
+              <div class="text-center">
+              </div>
+            </div>
+          </div>
+
+          </div>
+              </center>
+
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
+          </div>
+
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+            <p>Young children are at increased risk for infectious diseases because their immune systems have not yet
+              built up the necessary defenses to fight serious infections and diseases. As a result, diseases
+              like whooping cough or pneumococcal disease can be very serious — and even deadly — for infants and
+              young children. Vaccinations start early in life to protect children before they are exposed to these diseases.</p>
+
+
+            {% for i in res %}
+
+            <div class="icon-box">
+
+              <div class="icon"><i class="bx bi-journal-medical"></i></div>
+              <h4 class="title"><a href="">{{i.category}}</a></h4>
+              <p class="description">{{i.address}}</p>
+            </div>
+              {% endfor %}
+
+
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>TAKECARE</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+          Designed by Nextgenpro innovations
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="../static/assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
+      {% endblock %}
+
+</body>
+
+</html>

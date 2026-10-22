@@ -1,0 +1,138 @@
+{% load static %}
+{% block content %}
+{% include 'welheaderp.html' %}
+
+  <!-- ======= Hero Section ======= -->
+  <section id="contact" class="contact">
+
+
+
+
+      <div class="container">
+        <br>
+        <br>
+        <div class="row mt-5">
+
+
+          </div>
+<H1>Time Shedule</H1>
+        <HR>
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="timeshe" onsubmit ="return validateForm()" method="post" >
+                                      {% csrf_token %}
+                        					    {{form.as_p}}
+
+
+              <div class="row">
+
+                <div class="col-md-6 form-group mt-3 mt-md-0">Doctor Name
+<select name="name" id="fname" required class="form-control">
+                       <option>--Select--</option>
+                       {% for i in res %}
+
+                       <option value="{{i.name}}">{{i.name}}</option>
+{% endfor %}
+                     </select>
+                </div><br>
+                                  <div class="col-md-6 form-group mt-3 mt-md-0">
+    Specialisation
+                <select name="specialisation" required class="form-control">
+                       <option>--Select--</option>
+                       {% for i in res %}
+
+                       <option value="{{i.specialisation}}">{{i.specialisation}}</option>
+{% endfor %}
+                     </select>
+                                      </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">Date
+                  <input type="date" class="form-control" name="date" id="email" placeholder="Enter date "required>
+                </div><br><br>
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="text" class="form-control" name="start" id="email" placeholder="Enter Start Time  eg:6AM" required>
+                </div>
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="text" class="form-control" name="end" id="email" placeholder="Enter End Time  eg:6PM" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                 <input type="hidden" id="custId" name="status" value="available">
+                </div>
+
+
+              </div>
+<br>
+
+              <div class="text-center"><input  type="submit" name="sub" Value="submit" class="btn btn-primary"></div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+
+  <!-- ======= Footer ======= -->
+    <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>TAKECARE</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+          Designed by Nextgenpro innovations
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="../static/assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/assets/js/main.js"></script>
+  <script>  
+function validateForm() {  
+    //collect form data in JavaScript variables  
+    
+    var name1 = document.getElementById("fname").value;  
+      
+    //check empty first name field  
+    if(name1 == "") {  
+      document.getElementById("blankMsg").innerHTML = "**Fill the first name";  
+      return false;  
+    }  
+      
+   else {  
+      alert ("successfully added");  
+    }  
+ }  
+</script> 
+      {% endblock %}
+
+</body>
+
+</html>

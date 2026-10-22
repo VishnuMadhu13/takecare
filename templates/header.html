@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<html lang="en">
+
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TAKECARE</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css1/style.css' %}">
+    <link rel="stylesheet" type="image/png" href="{% static 'css1/font-awesome.min.css' %}">
+
+
+    <!-- Responsive stylesheet  -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css1/responsive.css' %}">
+
+    <!-- Favicon -->
+    <link href="{% static 'img1/favicon.png' %}" rel="shortcut icon" type="image/png">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js1/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <!-- Header navbar start -->
+    <div class="header-topbar style-2">
+        <div class="container padding-none">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 welcome-top">
+                    <ul class="list-inline top-icon">
+                        <li><i class="fa fa-envelope"></i>takecare@gmail.com</li>
+                        <li><i class="fa fa-clock-o"></i> Mon - Sun 6.am - 6.pm</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <ul class="list-inline text-right icon-style-1">
+                        <li class=" hvr-rectangle-out"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li class=" hvr-rectangle-out"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li class=" hvr-rectangle-out"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li class=" hvr-rectangle-out"><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                        <li class=" hvr-rectangle-out"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-navbar conner-style style-2 position-fixed">
+        <div class="container padding-none">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand dis-none " href=""><img src="../static/img1/logo1.gif" alt="" class="abc">
+                                </a>
+                            <a class="navbar-brand dis-block"	 href=""><img src="../static/img1/logo1.gif" class="abc" alt="">
+                                </a>
+
+								 <a class="navbar-brand dis-none"	 href=""><h1>Take care</h1>
+                                </a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-hover="dropdown" data-animations-delay="1.8s" data-animations="fadeInUp">
+                            <ul class="nav navbar-nav bg-none navbar-right style-3">
+							
+							
+							
+							<li><a href="{% url 'homeeee' %}">HOME</a>
+                                        </li>
+                               
+
+									<li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span data-hover="Doctors">ADMIN <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{%  url 'adhome' %}">LOGIN</a>
+                                        </li>
+                                        <!--<li><a href="team-details.html"></a>
+                                        </li>-->
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span data-hover="Doctors">Doctors <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{% url 'dreg' %}">REGISTER</a>
+                                        </li>
+                                        <li><a href="{% url 'login1' %}">LOGIN</a>
+                                        </li>
+                                        <!--<li><a href="team-details.html"></a>
+                                        </li>-->
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span data-hover="Portfolio">PATIENTS <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{% url 'preg' %}">REGISTRATION</a>
+                                            <li><a href="{% url 'log2' %}">LOGIN</a>
+                                        </li>
+                                        </li>
+                                        <!--<li><a href="portfolio-width.html">Portfolio Width</a>
+                                        </li>
+                                        <li><a href="portfolio-gutter.html">Portfolio Gutter Less</a>
+                                        </li>-->
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span data-hover="Pages">PHARMACY <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{% url 'phreg' %}">REGISTRATION</a>
+                                        </li>
+                                        <li><a href="{% url 'login4' %}">LOGIN</a>
+                                        </li>
+                                       <!-- <li><a href="shop-single.html">Shop Single</a>
+                                        </li>
+                                        <li><a href="shop-cart.html">Shop Cart</a>
+                                        </li>
+                                        <li><a href="shop-checkout.html">Shop Checkout</a>
+                                        </li>
+                                        <li><a href="testimonials.html">Testimonials</a>
+                                        </li>
+                                        <li><a href="comming-soon.html">Comming Soon</a>
+                                        </li>
+                                        <li><a href="error.html">Error / 404 page</a>
+                                        </li>-->
+                                    </ul>
+									<li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span data-hover="Doctors">LAB <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{% url 'labsreg' %}">REGISTERATION</a>
+                                        </li>
+                                       <li><a href="{% url 'lg' %}">LOGIN</a>
+                                        </li>
+                                        <!--<li><a href="team-details.html"></a>
+                                        </li>-->
+                                    </ul>
+								
+                                </li>
+								<li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span data-hover="Doctors">HOME NURSE <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
+                                    <ul class="dropdown-menu">
+
+                                       <li><a href="{% url 'homelogin' %}">LOGIN</a>
+                                        </li>
+                                        <!--<li><a href="team-details.html"></a>
+                                        </li>-->
+                                    </ul>
+								
+                                </li>
+								
+
+
+                                <li>
+                                    <div class="dropdown-buttons">
+                                        <div class="btn-group menu-search-box">
+                                            <button type="button" class="btn dropdown-toggle" id="header-drop-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon icon-Search"></i></button>
+                                            <ul class="dropdown-menu dropdown-menu-right dropdown-animation" aria-labelledby="header-drop-3">
+                                                <li>
+                                                    <form role="search" class="search-box">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Search">
+                                                            <i class="icon icon-Search form-control-feedback"></i>
+                                                        </div>
+                                                    </form>
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+	{% endblock %}

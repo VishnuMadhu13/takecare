@@ -1,0 +1,9 @@
+Django==3.2.25
+mysqlclient==2.2.4
+gunicorn==23.0.0
+whitenoise==6.6.0
+Pillow==10.4.0
+pytz==2024.1
+sqlparse==0.5.0
+asgiref==3.8.1
+# Add anything else your apps import (e.g. xhtml2pdf, reportlab) -- run `pip freeze` in your venv to confirm
