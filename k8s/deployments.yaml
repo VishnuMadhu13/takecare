@@ -30,7 +30,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: takecare
-          image: vishnumadhu13/takecare:3
+          image: vishnumadhu13/takecare:4
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
