@@ -21,7 +21,7 @@ pipeline {
         SONAR_HOST_URL  = 'http://3.107.90.61:9000'      // adjust to your SonarQube container/service name
         DOCKER_NETWORK  = 'ubuntu_default'             // docker network shared by Jenkins + SonarQube
         GIT_CRED        = 'github-jenkins'
-        DOCKERHUB_CRED  = 'docker-credentials'      // adjust to your Docker Hub credential id
+        DOCKERHUB_CRED  = 'docker-cred'      // adjust to your Docker Hub credential id
         SONAR_CRED      = 'sonar-token'                // Secret text credential with SonarQube token
         PYTHONDONTWRITEBYTECODE = '1'
     }
