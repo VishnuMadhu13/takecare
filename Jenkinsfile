@@ -18,7 +18,7 @@ pipeline {
         IMAGE           = "${DOCKERHUB_USER}/${APP_NAME}"
         TAG             = "${BUILD_NUMBER}"
         REPO_HOST_PATH  = 'github.com/VishnuMadhu13/takecare.git'
-        SONAR_HOST_URL  = 'http://3.107.90.61:9000'      // adjust to your SonarQube container/service name
+        SONAR_HOST_URL  = 'http://3.25.190.60:9000'      // adjust to your SonarQube container/service name
         DOCKER_NETWORK  = 'ubuntu_default'             // docker network shared by Jenkins + SonarQube
         GIT_CRED        = 'github-jenkins'
         DOCKERHUB_CRED  = 'docker-cred'      // adjust to your Docker Hub credential id
