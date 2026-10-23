@@ -32,6 +32,7 @@ pipeline {
             steps {
                 checkout scm
                 sh 'git log -1 --pretty=oneline'
+                sh 'git clean -ffdx'
             }
         }
 
