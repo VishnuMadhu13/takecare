@@ -102,16 +102,19 @@ pipeline {
                 script {
                     def exitCode = params.ENFORCE_SCANS ? 1 : 0
                     sh """
-                        docker run --rm \
-                            -v /var/run/docker.sock:/var/run/docker.sock \
-                            -v trivy-cache:/root/.cache/ \
-                            aquasec/trivy:latest image \
-                            --severity HIGH,CRITICAL --exit-code ${exitCode} --no-progress \
-                            ${IMAGE}:${TAG} | tee trivy-report.txt
+                        docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v trivy-cache:/root/.cache/ \
+                            aquasec/trivy:latest image --severity HIGH,CRITICAL --exit-code 0 --no-progress --quiet \
+                            --format json ${IMAGE}:${TAG} > trivy-report.json
+                        RC=0
+                        docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v trivy-cache:/root/.cache/ \
+                            aquasec/trivy:latest image --severity HIGH,CRITICAL --exit-code ${exitCode} --no-progress --quiet \
+                            ${IMAGE}:${TAG} > trivy-report.txt || RC=\$?
+                        cat trivy-report.txt
+                        exit \$RC
                     """
                 }
             }
-            post { always { archiveArtifacts artifacts: 'trivy-report.txt', allowEmptyArchive: true } }
+            post { always { archiveArtifacts artifacts: 'trivy-report.*', allowEmptyArchive: true } }
         }
 
         stage('DAST (OWASP ZAP)') {
@@ -142,12 +145,12 @@ pipeline {
                     done
 
                     docker run --name $ZAP --network $NET -v $VOL:/zap/wrk -t ghcr.io/zaproxy/zaproxy:stable \
-                        zap-baseline.py -t http://$APP:8000 -r zap-report.html -I || true
-                    docker cp $ZAP:/zap/wrk/zap-report.html ./zap-report.html
+                        zap-baseline.py -t http://$APP:8000 -r zap-report.html -J zap-report.json -I || true
+                    docker cp $ZAP:/zap/wrk/zap-report.json ./zap-report.json || true
                     test -s zap-report.html
                 '''
             }
-            post { always { archiveArtifacts artifacts: 'zap-report.html', allowEmptyArchive: true } }
+            post { always { archiveArtifacts artifacts: 'zap-report.*', allowEmptyArchive: true } }
         }
 
         stage('Consolidated Security Report') {
