@@ -147,7 +147,8 @@ pipeline {
 
                     docker run --name $ZAP --network $NET -v $VOL:/zap/wrk -t ghcr.io/zaproxy/zaproxy:stable \
                         zap-baseline.py -t http://$APP:8000 -r zap-report.html -J zap-report.json -I || true
-                    docker cp $ZAP:/zap/wrk/zap-report.json ./zap-report.json || true
+                    docker cp $ZAP:/zap/wrk/zap-report.html ./zap-report.html
+                    docker cp $ZAP:/zap/wrk/zap-report.json ./zap-report.json
                     test -s zap-report.html
                 '''
             }
